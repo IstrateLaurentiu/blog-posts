@@ -1,0 +1,35 @@
+.postsList {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.postCard {
+  width: 800px;
+  padding: 24px;
+  color: gray;
+  border: 1px solid gray;
+  word-break: break-all;
+}
+
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.postFooter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.postTitle {
+  font-weight: bold;
+  font-size: 24px;
+  color: black;
+}
+
+.createPostCTA {
+  align-self: flex-end;
+}

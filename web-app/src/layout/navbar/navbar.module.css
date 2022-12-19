@@ -1,0 +1,36 @@
+.header {
+  padding: 24px 0;
+  background-color: purple;
+  padding-bottom: 40px;
+}
+
+.logo {
+  margin-bottom: 24px;
+  color: white;
+  font-size: 26px;
+}
+.header a {
+  color: white;
+  font-size: medium;
+  text-decoration: none;
+}
+
+.headerStatus {
+  align-self: flex-end;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.links {
+  display: flex;
+  gap: 12px;
+}
+
+.button {
+  background-color: transparent;
+  border: 0 none transparent;
+  color: white;
+}
