@@ -5,6 +5,5 @@ export class LoginUserDTO {
   email: string;
 
   @IsNotEmpty()
-  @MinLength(7)
   password: string;
 }

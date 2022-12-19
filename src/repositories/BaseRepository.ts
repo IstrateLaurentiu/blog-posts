@@ -13,6 +13,11 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
     return result;
   }
 
+  async findAllByCondition(condition: FilterQuery<T>) {
+    const result = await this._collection.find(condition);
+    return result;
+  }
+
   async find(filterQuery: FilterQuery<T>, selectOption?: string): Promise<T[]> {
     const result = await this._collection
       .find(filterQuery)
@@ -20,7 +25,9 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
     return result;
   }
   async findOne(id: string, selectOption?: string): Promise<T> {
-    const result = await this._collection.findOne({ id }).select(selectOption);
+    const result = await this._collection
+      .findOne({ _id: id })
+      .select(selectOption);
     return result as T;
   }
 

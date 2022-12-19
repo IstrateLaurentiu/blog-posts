@@ -9,6 +9,8 @@ import {
   HttpStatus,
   Patch,
   Delete,
+  Request,
+  HttpCode,
 } from '@nestjs/common';
 import { CreatePostDto, UpdatePostDto } from 'src/DTOs';
 import { HttpExceptionFilter } from 'src/users/filters/http-exception.filter';
@@ -29,6 +31,12 @@ export class PostController {
     return posts;
   }
 
+  @Get('me')
+  async getMyPosts(@Request() req) {
+    const posts = await this.postService.getPostsByUserId(req.user?.id);
+    return posts;
+  }
+
   @Get(':id')
   @UseFilters(HttpExceptionFilter)
   async getPostById(@Param('id') id: string) {
@@ -40,6 +48,14 @@ export class PostController {
         HttpStatus.BAD_REQUEST,
       );
     }
+    return post;
+  }
+
+  @Post(':id/view')
+  @HttpCode(200)
+  async registerPostView(@Param('id') id: string) {
+    const post = await this.postService.registerView(id);
+
     return post;
   }
 

@@ -33,8 +33,8 @@ export class UserController {
   @HttpCode(200)
   @UseFilters(HttpExceptionFilter)
   async login(@Body() loginUserDto: LoginUserDTO) {
-    const token = await this.userService.login(loginUserDto);
-    return { token };
+    const loginInfo = await this.userService.login(loginUserDto);
+    return loginInfo;
   }
 
   @Get('auth')

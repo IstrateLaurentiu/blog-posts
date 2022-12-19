@@ -61,6 +61,9 @@ export class UserService {
     const token = jwt.sign(tokenPayload, process.env.TOKEN_SECRET, {
       expiresIn: 3600,
     });
-    return token;
+
+    delete user.password;
+
+    return { user, token };
   }
 }

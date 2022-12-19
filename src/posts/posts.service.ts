@@ -23,8 +23,21 @@ export class PostService {
     return newPost;
   }
 
+  async registerView(postId: string): Promise<any> {
+    const post = await this.postRepository.increaseViewsNumber(postId);
+
+    return post;
+  }
+
   async getAllPosts() {
     const posts = await this.postRepository.findAll();
+    return posts;
+  }
+
+  async getPostsByUserId(userId) {
+    const posts = await this.postRepository.findAllByCondition({
+      createBy: userId,
+    });
     return posts;
   }
 
